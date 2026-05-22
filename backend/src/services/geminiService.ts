@@ -1,13 +1,12 @@
-import { GoogleGenAI, GoogleGenAIPrompt } from '@google/generative-ai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import { IKeyTerm, IFlashcard, IQuizQuestion, IFAQ } from '../models/Schemas';
 
 const API_KEY = process.env.GEMINI_API_KEY || '';
 
 // Access the Google Generative AI SDK
-let genAI: any = null;
+let genAI: GoogleGenerativeAI | null = null;
 if (API_KEY) {
   try {
-    const { GoogleGenerativeAI } = require('@google/generative-ai');
     genAI = new GoogleGenerativeAI(API_KEY);
     console.log('✨ Gemini Generative AI SDK initialized successfully.');
   } catch (err) {
